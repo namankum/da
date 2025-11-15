@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter to 려경 </title>
+
+    <!-- 귀여운 손글씨 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+            position: relative;
+        }
+
+        #letter {
+            font-family: 'Gamja Flower', cursive; /* 귀여운 손글씨 폰트 */
+            font-size: 35px; /* 글씨 크기 1.5배 */
+            color: white;
+            text-align: center;
+            letter-spacing: 0.1em;
+            position: relative;
+            z-index: 1;
+            font-weight: bold;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+
+            margin-bottom: 10cm; /* 글씨를 3cm 위로 올림 */
+        }
+
+        .star {
+            position: absolute;
+            background: #fafaf7;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            clip-path: polygon(
+                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+                50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+            );
+            animation: twinkle 120s infinite; /* 기본 애니메이션 훨씬 느리게 */
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(500px);
+                opacity: 0;
+            }
+        }
+
+        .image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 300px;
+            min-height: 200px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="https://raw.githubusercontent.com/namankum/da/main/da.jpeg" alt="">
+    </div>
+
+    <div id="letter">
+        <MARQUEE hspace="100" vspace="100" direction="up" scrollamount="2">
+            <br> 려경아 20살 첫 생일 축하해! <br>&nbsp;
+        </MARQUEE>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const numberOfStars = 200;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                createStar();
+            }
+
+            function createStar() {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+
+                // 애니메이션 속도도 전체적으로 더 느리게 (3초~6초)
+                star.style.animationDuration = `${Math.random() * 3 + 3}s`;
+
+                document.body.appendChild(star);
+            }
+        });
+    </script>
+
+</body>
+</html>
